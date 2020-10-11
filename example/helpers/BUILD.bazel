@@ -1,0 +1,9 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "helpers",
+    srcs = ["helpers.go"],
+    importpath = "mobl-dev/example/helpers",
+    visibility = ["//visibility:public"],
+    deps = ["@com_github_bold_commerce_protoc_gen_struct_transformer//example/nulls:go_default_library"],
+)

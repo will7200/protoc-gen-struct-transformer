@@ -1,2 +1,6 @@
 *.coverprofile
 coverage.*
+bazel-bin
+bazel-out
+bazel-protoc-gen-struct-transformer
+bazel-testlogs
