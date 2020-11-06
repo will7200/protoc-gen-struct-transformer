@@ -4,7 +4,7 @@ load("@bazel_gazelle//:def.bzl", "gazelle")
 # gazelle:exclude microservices
 # gazelle:exclude legacy
 # gazelle:exclude src
-# gazelle:prefix github.com/bold-commerce/protoc-gen-struct-transformer
+# gazelle:prefix github.com/ZacxDev/protoc-gen-struct-transformer
 gazelle(
     name = "gazelle",
 )
@@ -12,7 +12,7 @@ gazelle(
 go_library(
     name = "protoc-gen-struct-transformer_lib",
     srcs = ["main.go"],
-    importpath = "github.com/bold-commerce/protoc-gen-struct-transformer",
+    importpath = "github.com/ZacxDev/protoc-gen-struct-transformer",
     visibility = ["//visibility:private"],
     deps = [
         "//generator",

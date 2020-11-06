@@ -3,7 +3,7 @@ package generator
 import (
 	"io"
 
-	"github.com/bold-commerce/protoc-gen-struct-transformer/source"
+	"github.com/ZacxDev/protoc-gen-struct-transformer/source"
 	descriptor "github.com/golang/protobuf/protoc-gen-go/descriptor"
 )
 

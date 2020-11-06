@@ -6,7 +6,7 @@ go_library(
     name = "options",
     srcs = ["doc.go"],
     embed = [":options_go_proto"],
-    importpath = "github.com/bold-commerce/protoc-gen-struct-transformer/options",
+    importpath = "github.com/ZacxDev/protoc-gen-struct-transformer/options",
     visibility = ["//visibility:public"],
 )
 
@@ -19,7 +19,7 @@ proto_library(
 
 go_proto_library(
     name = "options_go_proto",
-    importpath = "github.com/bold-commerce/protoc-gen-struct-transformer/options",
+    importpath = "github.com/ZacxDev/protoc-gen-struct-transformer/options",
     proto = ":options_proto",
     visibility = ["//visibility:public"],
 )

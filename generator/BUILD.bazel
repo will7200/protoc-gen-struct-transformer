@@ -16,7 +16,7 @@ go_library(
         "template.go",
         "types.go",
     ],
-    importpath = "github.com/bold-commerce/protoc-gen-struct-transformer/generator",
+    importpath = "github.com/ZacxDev/protoc-gen-struct-transformer/generator",
     visibility = ["//visibility:public"],
     deps = [
         "//options",

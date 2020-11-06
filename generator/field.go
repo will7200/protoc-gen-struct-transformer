@@ -6,8 +6,8 @@ import (
 	"io"
 	"strings"
 
-	"github.com/bold-commerce/protoc-gen-struct-transformer/options"
-	"github.com/bold-commerce/protoc-gen-struct-transformer/source"
+	"github.com/ZacxDev/protoc-gen-struct-transformer/options"
+	"github.com/ZacxDev/protoc-gen-struct-transformer/source"
 	descriptor "github.com/golang/protobuf/protoc-gen-go/descriptor"
 	"github.com/iancoleman/strcase"
 	pkgerrors "github.com/pkg/errors"

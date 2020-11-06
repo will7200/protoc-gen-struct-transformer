@@ -7,7 +7,7 @@ go_library(
         "field.go",
         "parser.go",
     ],
-    importpath = "github.com/bold-commerce/protoc-gen-struct-transformer/source",
+    importpath = "github.com/ZacxDev/protoc-gen-struct-transformer/source",
     visibility = ["//visibility:public"],
 )
 
