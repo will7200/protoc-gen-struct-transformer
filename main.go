@@ -21,8 +21,8 @@ import (
 	"path/filepath"
 
 	"github.com/bold-commerce/protoc-gen-struct-transformer/generator"
-	plugin "github.com/gogo/protobuf/protoc-gen-gogo/plugin"
 	"github.com/golang/protobuf/proto"
+	plugin "github.com/golang/protobuf/protoc-gen-go/plugin"
 	"golang.org/x/tools/imports"
 )
 

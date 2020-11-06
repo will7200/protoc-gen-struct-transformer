@@ -5,8 +5,8 @@ import (
 
 	"github.com/bold-commerce/protoc-gen-struct-transformer/options"
 	"github.com/bold-commerce/protoc-gen-struct-transformer/source"
-	"github.com/gogo/protobuf/proto"
-	"github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
+	"github.com/golang/protobuf/proto"
+	descriptor "github.com/golang/protobuf/protoc-gen-go/descriptor"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"

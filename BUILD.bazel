@@ -4,26 +4,26 @@ load("@bazel_gazelle//:def.bzl", "gazelle")
 # gazelle:exclude microservices
 # gazelle:exclude legacy
 # gazelle:exclude src
-# gazelle:prefix mobl-dev
+# gazelle:prefix github.com/bold-commerce/protoc-gen-struct-transformer
 gazelle(
     name = "gazelle",
 )
 
 go_library(
-    name = "mobl-dev_lib",
+    name = "protoc-gen-struct-transformer_lib",
     srcs = ["main.go"],
-    importpath = "mobl-dev",
+    importpath = "github.com/bold-commerce/protoc-gen-struct-transformer",
     visibility = ["//visibility:private"],
     deps = [
-        "@com_github_bold_commerce_protoc_gen_struct_transformer//generator:go_default_library",
-        "@com_github_gogo_protobuf//protoc-gen-gogo/plugin:go_default_library",
+        "//generator",
         "@com_github_golang_protobuf//proto:go_default_library",
-        "@org_golang_x_tools//imports:go_default_library",
+        "@io_bazel_rules_go//proto/wkt:compiler_plugin_go_proto",
+        "@org_golang_x_tools//imports",
     ],
 )
 
 go_binary(
-    name = "mobl-dev",
-    embed = [":mobl-dev_lib"],
+    name = "protoc-gen-struct-transformer",
+    embed = [":protoc-gen-struct-transformer_lib"],
     visibility = ["//visibility:public"],
 )

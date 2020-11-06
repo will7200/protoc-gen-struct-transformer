@@ -4,9 +4,8 @@ import (
 	"fmt"
 
 	"github.com/bold-commerce/protoc-gen-struct-transformer/options"
-	"github.com/gogo/protobuf/gogoproto"
-	"github.com/gogo/protobuf/proto"
-	"github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
+	"github.com/golang/protobuf/proto"
+	descriptor "github.com/golang/protobuf/protoc-gen-go/descriptor"
 )
 
 // extractStructNameOption returns transformer.go_struct option value.
@@ -90,10 +89,4 @@ func extractEmbedOption(m proto.Message) bool {
 // option does not exist.
 func extractSkipOption(m proto.Message) bool {
 	return getBoolOption(m, options.E_Skip)
-}
-
-// extractNullOption returns true if Field has a gogoproto.nullable option which
-// equals to true.
-func extractNullOption(f *descriptor.FieldDescriptorProto) bool {
-	return gogoproto.IsNullable(f)
 }

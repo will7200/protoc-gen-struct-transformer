@@ -8,7 +8,7 @@ import (
 
 	"github.com/bold-commerce/protoc-gen-struct-transformer/options"
 	"github.com/bold-commerce/protoc-gen-struct-transformer/source"
-	"github.com/gogo/protobuf/protoc-gen-gogo/descriptor"
+	descriptor "github.com/golang/protobuf/protoc-gen-go/descriptor"
 	"github.com/iancoleman/strcase"
 	pkgerrors "github.com/pkg/errors"
 )
@@ -134,7 +134,8 @@ func processSubMessage(w io.Writer,
 	if ln := lastName(pbtype); strings.Contains(pbtype, ".") {
 		pbtype = strcase.ToCamel(ln)
 	}
-	isNullable := extractNullOption(fdp)
+	// Hardcode false here because we don't support gogo nullables in this fork
+	isNullable := false
 
 	p2g = fmt.Sprintf(tpl, pbtype, pb)
 	g2p = fmt.Sprintf(tpl, pb, pbtype)
@@ -265,7 +266,8 @@ func processField(
 		t := *typ
 		switch t {
 		case ".google.protobuf.Timestamp":
-			isNullable := extractNullOption(fdp)
+			// Hardcode false here because we don't support gogo nullables in this fork
+			isNullable := false
 			return wktgoogleProtobufTimestamp(pname, gname, gf, isNullable), nil
 		case ".google.protobuf.StringValue":
 			return wktgoogleProtobufString(pname, gname, gf.Type), nil

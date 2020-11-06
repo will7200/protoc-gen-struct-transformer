@@ -1,9 +1,0 @@
-load("@io_bazel_rules_go//go:def.bzl", "go_library")
-
-go_library(
-    name = "model",
-    srcs = ["model.go"],
-    importpath = "mobl-dev/example/model",
-    visibility = ["//visibility:public"],
-    deps = ["@com_github_bold_commerce_protoc_gen_struct_transformer//example/nulls:go_default_library"],
-)

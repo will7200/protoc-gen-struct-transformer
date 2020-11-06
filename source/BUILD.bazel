@@ -7,7 +7,7 @@ go_library(
         "field.go",
         "parser.go",
     ],
-    importpath = "mobl-dev/source",
+    importpath = "github.com/bold-commerce/protoc-gen-struct-transformer/source",
     visibility = ["//visibility:public"],
 )
 
@@ -19,8 +19,8 @@ go_test(
     ],
     embed = [":source"],
     deps = [
-        "@com_github_onsi_ginkgo//:go_default_library",
-        "@com_github_onsi_ginkgo//extensions/table:go_default_library",
-        "@com_github_onsi_gomega//:go_default_library",
+        "@com_github_onsi_ginkgo//:ginkgo",
+        "@com_github_onsi_ginkgo//extensions/table",
+        "@com_github_onsi_gomega//:gomega",
     ],
 )
