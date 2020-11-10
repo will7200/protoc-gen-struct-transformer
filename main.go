@@ -19,6 +19,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/ZacxDev/protoc-gen-struct-transformer/generator"
 	"github.com/golang/protobuf/proto"
@@ -76,7 +77,7 @@ func main() {
 		}
 
 		resp.File = append(resp.File, &plugin.CodeGeneratorResponse_File{
-			Name:    proto.String(filename),
+			Name:    &strings.Split(*proto.String(filename), "/")[1],
 			Content: proto.String(content),
 		})
 
@@ -94,7 +95,7 @@ func main() {
 		}
 
 		resp.File = append(resp.File, &plugin.CodeGeneratorResponse_File{
-			Name:    proto.String(optPath),
+			Name:    &strings.Split(*proto.String(optPath), "/")[1],
 			Content: proto.String(content),
 		})
 	}
