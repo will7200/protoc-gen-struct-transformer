@@ -76,8 +76,9 @@ func main() {
 			continue
 		}
 
+		name := strings.Split(*proto.String(filename), "/")[1] + "-transformer"
 		resp.File = append(resp.File, &plugin.CodeGeneratorResponse_File{
-			Name:    &strings.Split(*proto.String(filename), "/")[1],
+			Name:    &name,
 			Content: proto.String(content),
 		})
 
