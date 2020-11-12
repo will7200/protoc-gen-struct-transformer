@@ -22,9 +22,9 @@ import (
 	"strings"
 
 	"github.com/ZacxDev/protoc-gen-struct-transformer/generator"
-	"github.com/golang/protobuf/proto"
-	plugin "github.com/golang/protobuf/protoc-gen-go/plugin"
 	"golang.org/x/tools/imports"
+	"google.golang.org/protobuf/proto"
+	plugin "google.golang.org/protobuf/types/pluginpb"
 )
 
 var (

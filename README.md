@@ -167,7 +167,7 @@ If you're going to make changes to plugin, use `go get ...` or `git clone ...`
 Next, we need `protoc-gen-go` plugin (or `protoc-gen-gogofaster` if you use
 `gogo` specific options) which creates `*.pb.go` file.
 ```shell
-go get -u github.com/golang/protobuf/protoc-gen-go
+go get -u google.golang.org/protobuf/protoc-gen-go
 // or
 go get -u github.com/gogo/protobuf/protoc-gen-gogofaster
 ```

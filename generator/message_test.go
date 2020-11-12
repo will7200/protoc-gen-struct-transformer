@@ -6,11 +6,11 @@ import (
 	"github.com/ZacxDev/protoc-gen-struct-transformer/options"
 	"github.com/ZacxDev/protoc-gen-struct-transformer/source"
 	"github.com/golang/protobuf/proto"
-	descriptor "github.com/golang/protobuf/protoc-gen-go/descriptor"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/ginkgo/extensions/table"
 	. "github.com/onsi/gomega"
 	pkgerrors "github.com/pkg/errors"
+	descriptor "google.golang.org/protobuf/types/descriptorpb"
 )
 
 var _ = Describe("Message", func() {

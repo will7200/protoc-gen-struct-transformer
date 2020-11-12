@@ -24,8 +24,8 @@ go_library(
         "@com_github_golang_protobuf//proto:go_default_library",
         "@com_github_iancoleman_strcase//:strcase",
         "@com_github_pkg_errors//:errors",
-        "@com_github_golang_protobuf//protoc-gen-go/descriptor",
-        "@com_github_golang_protobuf//protoc-gen-go/plugin",
+        "@org_golang_google_protobuf//types/descriptorpb:go_default_library",
+        "@org_golang_google_protobuf//types/pluginpb:go_default_library",
     ],
 )
 
@@ -44,12 +44,11 @@ go_test(
     deps = [
         "//options",
         "//source",
-        "@com_github_golang_protobuf//proto:go_default_library",
         "@com_github_onsi_ginkgo//:ginkgo",
         "@com_github_onsi_ginkgo//extensions/table",
         "@com_github_onsi_gomega//:gomega",
         "@com_github_onsi_gomega//gstruct",
         "@com_github_pkg_errors//:errors",
-        "@com_github_golang_protobuf//protoc-gen-go/plugin",
+        "@org_golang_google_protobuf//proto:go_default_library",
     ],
 )

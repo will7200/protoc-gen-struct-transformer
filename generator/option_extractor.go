@@ -5,7 +5,7 @@ import (
 
 	"github.com/ZacxDev/protoc-gen-struct-transformer/options"
 	"github.com/golang/protobuf/proto"
-	descriptor "github.com/golang/protobuf/protoc-gen-go/descriptor"
+	descriptor "google.golang.org/protobuf/types/descriptorpb"
 )
 
 // extractStructNameOption returns transformer.go_struct option value.

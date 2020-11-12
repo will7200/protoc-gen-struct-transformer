@@ -45,13 +45,6 @@ go_repository(
 )
 
 go_repository(
-    name = "com_github_golang_protobuf",
-    importpath = "github.com/golang/protobuf",
-    sum = "h1:6nsPYzhq5kReh6QImI3k5qWzO4PEbvbIW2cwSfR/6xs=",
-    version = "v1.3.2",
-)
-
-go_repository(
     name = "com_github_hpcloud_tail",
     importpath = "github.com/hpcloud/tail",
     sum = "h1:Ysi1UhrSyBltF8f+3RAt4UaqHc+53JJ0jyl0pY0sfck=",

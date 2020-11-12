@@ -1,6 +1,6 @@
 package generator
 
-import "github.com/golang/protobuf/protoc-gen-go/descriptor"
+import descriptor "google.golang.org/protobuf/types/descriptorpb"
 
 type typeRel struct {
 	pbType     string

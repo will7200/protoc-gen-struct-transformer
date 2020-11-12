@@ -16,8 +16,8 @@ go_library(
     visibility = ["//visibility:private"],
     deps = [
         "//generator",
-        "@com_github_golang_protobuf//proto:go_default_library",
-        "@com_github_golang_protobuf//protoc-gen-go/plugin",
+        "@org_golang_google_protobuf//proto:go_default_library",
+        "@org_golang_google_protobuf//types/pluginpb:go_default_library",
         "@org_golang_x_tools//imports",
     ],
 )

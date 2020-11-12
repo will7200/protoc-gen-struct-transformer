@@ -4,7 +4,7 @@ import (
 	"io"
 
 	"github.com/ZacxDev/protoc-gen-struct-transformer/source"
-	descriptor "github.com/golang/protobuf/protoc-gen-go/descriptor"
+	descriptor "google.golang.org/protobuf/types/descriptorpb"
 )
 
 // processMessage processes each message regardless of contains it an options or

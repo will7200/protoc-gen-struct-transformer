@@ -4,9 +4,9 @@ import (
 	"testing"
 
 	"github.com/ZacxDev/protoc-gen-struct-transformer/source"
-	descriptor "github.com/golang/protobuf/protoc-gen-go/descriptor"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
+	descriptor "google.golang.org/protobuf/types/descriptorpb"
 )
 
 func TestGenerator(t *testing.T) {

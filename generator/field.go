@@ -8,9 +8,9 @@ import (
 
 	"github.com/ZacxDev/protoc-gen-struct-transformer/options"
 	"github.com/ZacxDev/protoc-gen-struct-transformer/source"
-	descriptor "github.com/golang/protobuf/protoc-gen-go/descriptor"
 	"github.com/iancoleman/strcase"
 	pkgerrors "github.com/pkg/errors"
+	descriptor "google.golang.org/protobuf/types/descriptorpb"
 )
 
 // lastName splits string by "." and returns last part.
