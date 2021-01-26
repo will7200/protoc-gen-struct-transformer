@@ -19,7 +19,6 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"strings"
 
 	"github.com/ZacxDev/protoc-gen-struct-transformer/generator"
 	"golang.org/x/tools/imports"

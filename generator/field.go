@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"io"
+	"os"
 	"strings"
 
 	"github.com/ZacxDev/protoc-gen-struct-transformer/options"
@@ -151,11 +152,8 @@ func processSubMessage(w io.Writer,
 	}
 
 	if fm, ok := goStructFields[gname]; ok {
-		if mo == nil {
-			return nil, errors.New("mo is nil")
-		}
 		f.GoIsPointer = fm.IsPointer
-		if !customTransformer {
+		if mo != nil && !customTransformer {
 			// OneofDecl is used for the BoldCommerce-specific implementation of OneOf for the migration from Int64ToString
 			f.OneofDecl = mo.OneofDecl()
 		}
@@ -243,6 +241,7 @@ func processField(
 	gf, ok := goStructFields[gname]
 	if !ok {
 		// do not check for embedded fields.
+		fmt.Fprintf(os.Stderr, "hello %+v\n", goStructFields)
 		if isEmbed := extractEmbedOption(fdp.Options); !isEmbed {
 			return nil, pkgerrors.Wrap(errors.New("field not found in destination structure"), gname)
 		}

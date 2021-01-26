@@ -3,7 +3,6 @@ module github.com/ZacxDev/protoc-gen-struct-transformer
 go 1.15
 
 require (
-	github.com/gogo/protobuf v1.3.1
 	github.com/golang/protobuf v1.4.1
 	github.com/hpcloud/tail v1.0.1-0.20180514194441-a1dbeea552b7 // indirect
 	github.com/iancoleman/strcase v0.0.0-20191112232945-16388991a334

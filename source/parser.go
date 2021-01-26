@@ -70,19 +70,67 @@ func inspect(output StructureList) func(n ast.Node) bool {
 				}
 
 			case *ast.ArrayType:
-				typ := "empty_type"
+				fi := FieldInfo{Type: "empty_type", IsPointer: true}
 				switch at := t.Elt.(type) {
 				case *ast.SelectorExpr:
-					typ = at.Sel.Name
+					fi.Type = at.Sel.Name
 				case *ast.Ident:
-					typ = at.Name
+					fi.Type = at.Name
+				case *ast.StarExpr:
+					switch se := at.X.(type) {
+					case *ast.Ident: // *SomeStruct, *string, *int etc.
+						fi.Type = se.Name
+						fi.IsPointer = true
+					case *ast.SelectorExpr: // *time.Time
+						fi.Type = fmt.Sprintf("%s.%s", se.X.(*ast.Ident).Name, se.Sel.Name)
+						fi.IsPointer = true
+					default:
+						typ := fmt.Sprintf("%s", reflect.TypeOf(t))
+						output[structName]["unsupported_star_expr_"+typ] = FieldInfo{Type: fmt.Sprintf("%T", se), IsPointer: true}
+						return true
+					}
 				default:
 					typ := fmt.Sprintf("%s", reflect.TypeOf(t))
 					output[structName]["unsupported_array_type_"+typ] = FieldInfo{Type: fmt.Sprintf("%T", at)}
 					return true
 				}
-				output[structName][fname] = FieldInfo{Type: typ}
+				output[structName][fname] = fi
 
+			case *ast.MapType:
+				keyType := ""
+				valueType := ""
+				switch tt := t.Key.(type) {
+				case *ast.Ident: // simple types e.g. int, string, etc.
+					keyType = tt.Name
+
+				case *ast.SelectorExpr: // types like time.Time, time.Duration, nulls.String
+					keyType = fmt.Sprintf("%s.%s", tt.X.(*ast.Ident).Name, tt.Sel.Name)
+				case *ast.StarExpr: // pointer to something
+					switch se := tt.X.(type) {
+					case *ast.Ident: // *SomeStruct, *string, *int etc.
+						keyType = se.Name
+					case *ast.SelectorExpr: // *time.Time
+						keyType = fmt.Sprintf("%s.%s", se.X.(*ast.Ident).Name, se.Sel.Name)
+					default:
+						typ := fmt.Sprintf("%s", reflect.TypeOf(t))
+						output[structName]["unsupported_star_expr_"+typ] = FieldInfo{Type: fmt.Sprintf("%T", se)}
+						return true
+					}
+				}
+				switch tt := t.Value.(type) {
+				case *ast.StarExpr: // pointer to something
+					switch se := tt.X.(type) {
+					case *ast.Ident: // *SomeStruct, *string, *int etc.
+						valueType = se.Name
+					case *ast.SelectorExpr: // *time.Time
+						valueType = fmt.Sprintf("%s.%s", se.X.(*ast.Ident).Name, se.Sel.Name)
+					default:
+						typ := fmt.Sprintf("%s", reflect.TypeOf(t))
+						output[structName]["unsupported_star_expr_"+typ] = FieldInfo{Type: fmt.Sprintf("%T", se)}
+						return true
+					}
+				}
+				output[structName][fname] = FieldInfo{Type: fmt.Sprintf("Map%sTo%s", keyType, valueType)}
 			default:
 				typ := fmt.Sprintf("%s", reflect.TypeOf(t))
 				output[structName]["unsupported_"+typ] = FieldInfo{Type: typ}
